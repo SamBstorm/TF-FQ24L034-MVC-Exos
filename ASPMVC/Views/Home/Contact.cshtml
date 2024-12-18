@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string address = "Av. Jean Mermoz 18\n6041 Charleroi";
+    string tel = "071 25 49 60";
+}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -20,8 +24,8 @@
     <main>
         <section>
             <h1>Nous contacter</h1>
-            <address>Av. Jean Mermoz 18<br>6041 Charleroi</address>
-            <a href="tel:+3271254960">071 25 49 60</a>
+            <address>@address</address>
+            <a href="tel:+3271254960">@tel</a>
         </section>
     </main>
     <footer>

@@ -1,4 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@{
+    /*Dictionary<string, string> links = new Dictionary<string, string>();
+    links.Add("Accueil", "/");
+    links.Add("S'enregistrer", "/Register");
+    links.Add("Se connecter", "/Login");
+    links.Add("Nous contacter", "/Home/Contact");*/
+
+    Dictionary<string, string> links = new Dictionary<string, string>()
+    {
+        { "Accueil", "/" },
+        { "S'enregistrer", "/Register" },
+        { "Se connecter", "/Login" },
+        { "Nous contacter", "/Home/Contact" },
+    };
+}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -10,10 +25,10 @@
         <h1>Technofutur TIC</h1>
         <nav>
             <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/Register">S'enregistrer</a></li>
-                <li><a href="/Login">Se connecter</a></li>
-                <li><a href="/Home/Contact">Nous contacter</a></li>
+                @foreach(KeyValuePair<string, string> link in links)
+                {
+                    <li><a href="@link.Value">@link.Key</a></li>
+                }
             </ul>
         </nav>
     </header>
