@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ASPMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASPMVC.Controllers
 {
@@ -14,7 +15,23 @@ namespace ASPMVC.Controllers
         public IActionResult Contact()
         {
             Title += " - Nous Contacter";
-            return View();
+            Contact model = new Contact()
+            {
+                Address = new Address()
+                {
+                    Street = "Av. Jean Mermoz",
+                    Number = "18",
+                    ZipCode = 6100,
+                    City = "Gosselies",
+                    Country = "Belgique"
+                },
+                Phone = new PhoneNumber()
+                {
+                    Number = "071 25 49 60",
+                    International = "+32"
+                }
+            };
+            return View(model);
         }
     }
 }

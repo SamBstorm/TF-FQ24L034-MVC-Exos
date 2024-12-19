@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ASPMVC.Models;
+@model Contact;
+@{
     string address = "Av. Jean Mermoz 18\n6041 Charleroi";
     string tel = "071 25 49 60";
 }
@@ -24,8 +26,12 @@
     <main>
         <section>
             <h1>Nous contacter</h1>
-            <address>@address</address>
-            <a href="tel:+3271254960">@tel</a>
+            <address>
+                @Model.Address.Street @Model.Address.Number<br />
+                @Model.Address.ZipCode @Model.Address.City<br />
+                @Model.Address.Country
+            </address>
+            <a href="tel:@(Model.Phone.International+Model.Phone.Number.Replace(" ","").Substring(1))">@Model.Phone.Number</a>
         </section>
     </main>
     <footer>
