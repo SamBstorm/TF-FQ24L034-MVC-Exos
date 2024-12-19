@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercice ASP MVC - Se connecter</title>
+    <title>@ViewBag.Title</title>
 </head>
 <body>
     <header>
@@ -20,6 +20,12 @@
     <main>
         <section>
             <h1>Vous connecter?</h1>
+            @if (TempData.ContainsKey("message"))
+            {
+                <div style="background-color:rgb(128,255,128); padding : 15px; border : 2px solid rgb(0,64,0); color : rgb(0,64,0); border-radius : 15px; text-align : center;">
+                    <p>@TempData["message"]</p>
+                </div>
+            }
             <form method="post">
                 <div>
                     <label for="email">Courriel : </label>
