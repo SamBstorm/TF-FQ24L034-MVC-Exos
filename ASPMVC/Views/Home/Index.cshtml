@@ -34,6 +34,12 @@
     </header>
     <main>
         <section>
+            @if (TempData.ContainsKey("message"))
+            {
+                <div style="background-color:rgb(128,255,128); padding : 15px; border : 2px solid rgb(0,64,0); color : rgb(0,64,0); border-radius : 15px; text-align : center;">
+                    <p>@TempData["message"]</p>
+                </div>
+            }
             <h1>Bienvenue sur Technofutur TIC</h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi repellat nam numquam ab reiciendis est alias quo similique enim voluptatibus, eius officiis molestias quis consectetur temporibus magni natus odit accusantium.</p>
         </section>

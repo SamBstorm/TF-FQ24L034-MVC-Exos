@@ -26,6 +26,12 @@
                     <p>@TempData["message"]</p>
                 </div>
             }
+            @if (ViewData.ContainsKey("errorMessage"))
+            {
+                <div style="background-color:rgb(255,128,128); padding : 15px; border : 2px solid rgb(64,0,0); color : rgb(64,0,0); border-radius : 15px; text-align : center;">
+                    <p>@ViewBag.errorMessage</p>
+                </div>
+            }
             <form method="post">
                 <div>
                     <label for="email">Courriel : </label>
