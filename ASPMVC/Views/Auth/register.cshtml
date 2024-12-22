@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using ASPMVC.Models;
+@model RegisterForm;
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -18,37 +22,49 @@
         </nav>
     </header>
     <main>
+
         <section>
-            <h1>Vous enregistrer?</h1>
-            <form method="post">
-                <div>
-                    <label for="firstname">Prénom : </label>
-                    <input type="text" id="firstname" name="firstname">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Vous enregistrer?</h1>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            @Html.LabelFor(m => m.FirstName, new {@class = "col-form-label col-2"})
+                            @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control col-10" } })
+                            @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger fw-bold"})
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.LastName, new {@class = "col-form-label col-2"})
+                            @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control col-10" } })
+                            @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger fw-bold" })
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.BirthDate, new {@class = "col-form-label col-2"})
+                            @Html.EditorFor(m => m.BirthDate, new { htmlAttributes = new { @class = "form-control col-10" } })
+                            @Html.ValidationMessageFor(m => m.BirthDate, null, new { @class = "text-danger fw-bold" })
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.Email, new {@class = "col-form-label col-2"})
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control col-10" } })
+                            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger fw-bold" })
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.Password, new {@class = "col-form-label col-2"})
+                            @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control col-10" } })
+                            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger fw-bold" })
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-form-label col-2"})
+                            @Html.EditorFor(m => m.ConfirmPassword, new { htmlAttributes = new { @class = "form-control col-10" } })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger fw-bold" })
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-outline-success">Valider</button>
+                        </div>
+                    }
                 </div>
-                <div>
-                    <label for="lastname">Nom de famille : </label>
-                    <input type="text" id="lastname" name="lastname">
-                </div>
-                <div>
-                    <label for="birthdate">Date de naissance : </label>
-                    <input type="date" id="birthdate" name="birthdate">
-                </div>
-                <div>
-                    <label for="email">Courriel : </label>
-                    <input type="email" id="email" name="email">
-                </div>
-                <div>
-                    <label for="password">Mot de passe : </label>
-                    <input type="password" id="password" name="password">
-                </div>
-                <div>
-                    <label for="confirmPassword">Veuillez confirmer le mot de passe : </label>
-                    <input type="password" id="confirmPassword" name="confirmPassword">
-                </div>
-                <div>
-                    <button type="submit">Valider</button>
-                </div>
-            </form>
+            </div>
         </section>
     </main>
     <footer>

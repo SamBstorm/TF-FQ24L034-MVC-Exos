@@ -15,13 +15,26 @@ namespace ASPMVC.Controllers
         public IActionResult Register()
         {
             Title += " - S'enregistrer";
-            if (TempData.ContainsKey("message"))
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Register(RegisterForm form)
+        {
+            try
             {
+                ModelState
+                    .ValidateNeedLowerCase(form.Password, nameof(form.Password))
+                    .ValidateNeedUpperCase(form.Password, nameof(form.Password))
+                    .ValidateNeedNumber(form.Password, nameof(form.Password))
+                    .ValidateNeedSymbol(form.Password, nameof(form.Password))
+                    .ValidateIsMajor(form.BirthDate.ToDateTime(new TimeOnly()), nameof(form.BirthDate));
+                if (!ModelState.IsValid) throw new InvalidOperationException();
+                //Validation de l'enregistrement de l'utilisateur via un service de connection en DB
+                TempData["message"] = "Vous êtes maintenant enregistré!";
                 return RedirectToAction(nameof(Login));
             }
-            else
+            catch (Exception ex)
             {
-                TempData["message"] = "Vous êtes maintenant enregistré!";
                 return View();
             }
         }

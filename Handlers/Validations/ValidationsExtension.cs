@@ -59,5 +59,14 @@ namespace Handlers.Validations
             }
             return modelState;
         }
+
+        public static ModelStateDictionary ValidateIsMajor(this ModelStateDictionary modelState, DateTime date, string fieldName)
+        {
+            if(date > DateTime.Now.AddYears(-18))
+            {
+                modelState.AddModelError(fieldName, $"Vous n'êtes pas majeur!");
+            }
+            return modelState;
+        }
     }
 }
